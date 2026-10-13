@@ -3,29 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Кухань — дом кухни</title>
+<title>Кухни — дом кухни</title>
 <meta name="description" content="Кухни на заказ по вашим размерам: замер, 3D-проект, изготовление и установка.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-/* Лендинг: тёмно-бордовые полосы (шапка, расчёт, подвал) чередуются со светлыми розоватыми */
+/* Лендинг: графитовые полосы (шапка, расчёт, подвал) чередуются с белыми */
 :root{
-  --wine:#3D0F19;      /* тёмный бордо: фон полос и основной текст */
-  --accent:#7A1E2C;    /* бордовый акцент: кнопки, цифры */
-  --accent-dark:#561420;
-  --rose:#E8B4A0;      /* пыльная роза на тёмном */
-  --bg:#F7F1EF;        /* основной светлый фон */
-  --bg-2:#EFE1DF;      /* фон портфолио */
+  --wine:#26282B;      /* графит: фон полос и основной текст */
+  --accent:#2F3236;    /* графитовый акцент: кнопки, цифры */
+  --accent-dark:#111214;
+  --rose:#D4D7DB;      /* светло-серый на тёмном */
+  --bg:#FFFFFF;        /* основной светлый фон */
+  --bg-2:#F2F3F4;      /* фон портфолио */
   --card:#FFFFFF;
-  --muted:#574446;
-  --muted-2:#66514F;
-  --line:#E2D4D2;
-  --line-2:#F0E6E4;
-  --soft:#F6E4E6;      /* выбранный вариант */
-  --on-dark:#F7F1EF;
-  --on-dark-muted:#E3CACA;
-  --ph:#E9D6D3;        /* заглушки фото */
+  --muted:#4A4E53;
+  --muted-2:#5F6368;
+  --line:#DCDFE2;
+  --line-2:#EDEEF0;
+  --soft:#EEF0F2;      /* выбранный вариант */
+  --on-dark:#FFFFFF;
+  --on-dark-muted:#C3C7CC;
+  --ph:#E6E8EA;        /* заглушки фото */
   --display:'Unbounded', 'Arial Black', sans-serif;
   --body:'Manrope', 'Segoe UI', system-ui, sans-serif;
   color-scheme:light;
@@ -87,7 +87,7 @@ h1,h2,h3{text-wrap:balance}
 .calc-intro .eyebrow{color:var(--rose)}
 .calc-intro p{margin:0;color:var(--on-dark-muted)}
 .designer{display:flex;align-items:center;gap:14px;padding-top:8px}
-.designer .ava{width:56px;height:56px;border-radius:50%;background:#5C2030;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--on-dark-muted);flex-shrink:0}
+.designer .ava{width:56px;height:56px;border-radius:50%;background:#3E4247;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--on-dark-muted);flex-shrink:0}
 .designer small{display:block;color:var(--on-dark-muted);font-size:14px}
 .quiz{background:var(--card);color:var(--wine);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:22px;min-width:0}
 @media (max-width:480px){.quiz{padding:22px}}
@@ -98,7 +98,7 @@ h1,h2,h3{text-wrap:balance}
 .step h3{margin:0;font-size:22px}
 .step p{margin:0;color:var(--muted-2);font-size:15px}
 .opts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
-.opt{min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px 12px;border-radius:12px;border:2px solid #EADCDA;background:var(--card);font:inherit;font-weight:700;font-size:16px;color:var(--wine);cursor:pointer}
+.opt{min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px 12px;border-radius:12px;border:2px solid #E3E5E8;background:var(--card);font:inherit;font-weight:700;font-size:16px;color:var(--wine);cursor:pointer}
 .opt:hover{border-color:var(--rose)}
 .opt[aria-pressed="true"]{border-color:var(--accent);background:var(--soft)}
 .opt svg{stroke:var(--accent)}
@@ -118,7 +118,7 @@ h1,h2,h3{text-wrap:balance}
 .section{padding-block:88px}
 .head{display:flex;flex-direction:column;gap:10px;margin-bottom:36px}
 .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:20px}
-.why div{background:var(--card);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.why div{background:var(--bg-2);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:12px}
 .why h3{margin:0;font-size:19px}
 .why p{margin:0;color:var(--muted)}
 .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));border-top:2px solid var(--wine)}
@@ -146,7 +146,7 @@ h1,h2,h3{text-wrap:balance}
 .faq-intro p{margin:0;color:var(--muted)}
 .faq-intro .btn{align-self:start}
 .faq-list{display:flex;flex-direction:column;gap:12px;min-width:0}
-details{background:var(--card);border-radius:14px}
+details{background:var(--bg-2);border-radius:14px}
 summary{list-style:none;cursor:pointer;min-height:64px;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;font-weight:700;font-size:17px}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";font-size:24px;color:var(--accent);flex-shrink:0}
@@ -160,16 +160,25 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
 .foot .label{color:var(--rose);font-weight:700;font-size:14px;letter-spacing:.08em}
 .foot .muted{color:var(--on-dark-muted)}
 .foot a{color:var(--on-dark);text-decoration:none}
-.foot-bottom{border-top:1px solid #5C2030;padding-top:24px;font-size:14px;color:#CFA9AB}
+.foot details.addr{background:none;border-radius:0}
+.foot details.addr summary{min-height:44px;padding:6px 0;font-weight:500;font-size:16px;justify-content:flex-start;gap:8px;align-items:flex-start}
+.foot details.addr summary svg{flex-shrink:0;margin-top:3px;color:var(--rose)}
+.foot details.addr summary::after{content:none}
+.foot details.addr summary span{text-decoration:underline;text-decoration-color:#5F6368;text-underline-offset:4px}
+.foot details.addr summary:hover span{text-decoration-color:var(--rose)}
+.foot .maps{display:flex;flex-wrap:wrap;gap:8px;padding:4px 0 10px 26px;flex-direction:row}
+.foot .maps a{border:1px solid var(--rose);border-radius:999px;padding:8px 14px;font-size:14px;min-height:40px;display:inline-flex;align-items:center}
+.foot .maps a:hover{background:var(--rose);color:var(--wine)}
+.foot-bottom{border-top:1px solid #3E4247;padding-top:24px;font-size:14px;color:#A9AEB4}
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <a href="#top" class="logo" aria-label="Кухань — на главную">
-      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="1" y="1" width="38" height="38" rx="8" fill="none" stroke="#E8B4A0" stroke-width="2"/><path d="M10 12v16M10 20l9-8M10 20l9 8M24 12h7M24 20h7M24 28h7" stroke="#E8B4A0" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
-      <span><b>КУХАНЬ</b><small>ДОМ КУХНИ</small></span>
+    <a href="#top" class="logo" aria-label="Кухни — на главную">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="1" y="1" width="38" height="38" rx="8" fill="none" stroke="#D4D7DB" stroke-width="2"/><path d="M10 12v16M10 20l9-8M10 20l9 8M24 12h7M24 20h7M24 28h7" stroke="#D4D7DB" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
+      <span><b>КУХНИ</b><small>ДОМ КУХНИ</small></span>
     </a>
     <nav class="nav" aria-label="Разделы">
       <a href="#calc">Расчёт</a>
@@ -178,7 +187,7 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
       <a href="#faq">Вопросы</a>
       <a href="#contacts">Контакты</a>
     </nav>
-    <a href="tel:+375000000000" class="phone">[ТЕЛЕФОН]</a>
+    <a href="tel:+375339111152" class="phone">+375 (33) 911-11-52</a>
   </div>
 </header>
 
@@ -193,9 +202,9 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
         <a href="#projects" class="btn btn-line">Посмотреть работы</a>
       </div>
       <div class="facts">
-        <div><b>[N] лет</b><span>на рынке</span></div>
-        <div><b>[N]+</b><span>готовых кухонь</span></div>
-        <div><b>[N] мес.</b><span>гарантия</span></div>
+        <div><b>25 лет</b><span>на рынке</span></div>
+        <div><b>10 000+</b><span>готовых кухонь</span></div>
+        <div><b>5 лет</b><span>гарантия</span></div>
       </div>
     </div>
     <div class="hero-photo ph">
@@ -249,10 +258,10 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
           <h3>На какой бюджет ориентируетесь?</h3>
           <p>Под бюджет подберём материалы и фурнитуру без лишних переплат.</p>
           <div class="opts" data-key="budget">
-            <button type="button" class="opt" aria-pressed="false" data-val="до [X] BYN">до [X] BYN</button>
-            <button type="button" class="opt" aria-pressed="false" data-val="[X]–[Y] BYN">[X]–[Y] BYN</button>
-            <button type="button" class="opt" aria-pressed="false" data-val="[Y]–[Z] BYN">[Y]–[Z] BYN</button>
-            <button type="button" class="opt" aria-pressed="false" data-val="от [Z] BYN">от [Z] BYN</button>
+            <button type="button" class="opt" aria-pressed="false" data-val="6 000 – 7 000 BYN">6 000 – 7 000 BYN</button>
+            <button type="button" class="opt" aria-pressed="false" data-val="7 000 – 8 000 BYN">7 000 – 8 000 BYN</button>
+            <button type="button" class="opt" aria-pressed="false" data-val="8 000 – 9 000 BYN">8 000 – 9 000 BYN</button>
+            <button type="button" class="opt" aria-pressed="false" data-val="более 10 000 BYN">более 10 000 BYN</button>
           </div>
         </div>
 
@@ -271,7 +280,7 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
         <p class="err" id="err" hidden></p>
 
         <div class="done" id="done" hidden>
-          <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="#7A1E2C" stroke-width="3"/><path d="M20 33l8 8 16-17" stroke="#7A1E2C" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="#2F3236" stroke-width="3"/><path d="M20 33l8 8 16-17" stroke="#2F3236" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h3>Заявка принята!</h3>
           <p>Дизайнер свяжется с вами в ближайшее время.</p>
           <button type="button" class="link-btn" id="restart">Пройти расчёт заново</button>
@@ -289,24 +298,24 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
     <div class="head"><h2 class="h2">Почему кухни заказывают у нас</h2></div>
     <div class="why">
       <div>
-        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#7A1E2C" stroke-width="1.8" stroke-linecap="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#2F3236" stroke-width="1.8" stroke-linecap="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
         <h3>Точно по размерам</h3>
         <p>Замер учитывает каждую трубу, розетку и выступ, поэтому гарнитур встаёт без щелей.</p>
       </div>
       <div>
-        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#7A1E2C" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#2F3236" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
         <h3>Проект до оплаты</h3>
         <p>Вы видите кухню в 3D, выбираете материалы и только потом подписываете договор.</p>
       </div>
       <div>
-        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#7A1E2C" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#2F3236" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
         <h3>Срок в договоре</h3>
         <p>Фиксируем стоимость и дату установки письменно, без сюрпризов в процессе.</p>
       </div>
       <div>
-        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#7A1E2C" stroke-width="1.8" stroke-linecap="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#2F3236" stroke-width="1.8" stroke-linecap="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
         <h3>Гарантия на мебель</h3>
-        <p>Фурнитура с доводчиками и гарантия [N] месяцев на всю кухню.</p>
+        <p>Фурнитура с доводчиками и гарантия 5 лет на всю кухню.</p>
       </div>
     </div>
   </section>
@@ -344,11 +353,11 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
       <span class="eyebrow">Вопросы</span>
       <h2 class="h2">Частые вопросы о заказе</h2>
       <p>Не нашли ответ? Позвоните или оставьте заявку, расскажем подробно.</p>
-      <a href="#calc" class="btn btn-dark">Задать вопрос</a>
+      <a href="#calc" class="btn btn-dark">Оставить заявку</a>
     </div>
     <div class="faq-list">
       <details open><summary>От чего зависит цена кухни?</summary><p>От длины гарнитура, материала фасадов и столешницы, фурнитуры и количества ящиков. Точную сумму называем после замера и 3D-проекта.</p></details>
-      <details><summary>Сколько ждать готовую кухню?</summary><p>Обычно [N] рабочих дней с момента подписания договора. Точный срок зависит от материалов и прописывается в договоре.</p></details>
+      <details><summary>Сколько ждать готовую кухню?</summary><p>Обычно от 45 до 90 дней с момента подписания договора. Точный срок зависит от материалов и прописывается в договоре.</p></details>
       <details><summary>Замер платный?</summary><p>[Укажите условия: бесплатно / стоимость / засчитывается в заказ].</p></details>
       <details><summary>Можно посмотреть материалы вживую?</summary><p>Да, в салоне есть образцы фасадов, столешниц и фурнитуры. Цвет на экране может отличаться, поэтому лучше выбирать вживую.</p></details>
       <details><summary>Вы устанавливаете технику?</summary><p>Встраиваем духовой шкаф, варочную панель, посудомойку и вытяжку. Подключение к сетям согласуем отдельно.</p></details>
@@ -359,11 +368,11 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
 <footer id="contacts" class="foot">
   <div class="wrap">
     <div class="foot-cols">
-      <div><span style="font-family:var(--display);font-size:24px;font-weight:700">КУХАНЬ</span><span class="muted">Дом кухни. Кухни на заказ под ваши размеры и бюджет.</span></div>
-      <div><span class="label">САЛОН</span><span>[АДРЕС САЛОНА]</span><span class="muted">[ЧАСЫ РАБОТЫ]</span></div>
-      <div><span class="label">СВЯЗАТЬСЯ</span><a href="tel:+375000000000" style="font-weight:700;font-size:20px">[ТЕЛЕФОН]</a><span class="muted">[E-MAIL]</span><span class="muted">Instagram · Telegram · Viber</span></div>
+      <div><span style="font-family:var(--display);font-size:24px;font-weight:700">КУХНИ</span><span class="muted">Дом кухни. Кухни на заказ под ваши размеры и бюджет.</span></div>
+      <div><span class="label">САЛОНЫ</span><details class="addr"><summary><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Смолевичи, ул. Александра Лявданского, 1</span></summary><div class="maps"><a href="https://yandex.by/maps/?text=%D0%A1%D0%BC%D0%BE%D0%BB%D0%B5%D0%B2%D0%B8%D1%87%D0%B8%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0%20%D0%9B%D1%8F%D0%B2%D0%B4%D0%B0%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%2C%201" target="_blank" rel="noopener">Открыть в Яндекс Картах</a><a href="https://www.google.com/maps/search/?api=1&amp;query=%D0%A1%D0%BC%D0%BE%D0%BB%D0%B5%D0%B2%D0%B8%D1%87%D0%B8%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%B0%20%D0%9B%D1%8F%D0%B2%D0%B4%D0%B0%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%2C%201" target="_blank" rel="noopener">Открыть в Google Картах</a></div></details><details class="addr"><summary><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Дзержинск, ул. 11 Июля, 3А/1 · ТЦ «Дискавери»</span></summary><div class="maps"><a href="https://yandex.by/maps/?text=%D0%94%D0%B7%D0%B5%D1%80%D0%B6%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2011%20%D0%98%D1%8E%D0%BB%D1%8F%2C%203%D0%90/1" target="_blank" rel="noopener">Открыть в Яндекс Картах</a><a href="https://www.google.com/maps/search/?api=1&amp;query=%D0%94%D0%B7%D0%B5%D1%80%D0%B6%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2011%20%D0%98%D1%8E%D0%BB%D1%8F%2C%203%D0%90/1" target="_blank" rel="noopener">Открыть в Google Картах</a></div></details><span class="muted">Ежедневно с 10:00 до 20:00</span></div>
+      <div><span class="label">СВЯЗАТЬСЯ</span><a href="tel:+375339111152" style="font-weight:700;font-size:20px">+375 (33) 911-11-52</a><span class="muted"><a href="https://www.instagram.com/p/DMFUZnrNDuC/?rpxt=cGJ6bThxbHlyajV6" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:4px">Instagram</a></span></div>
     </div>
-    <div class="foot-bottom">© 2026 Кухань — дом кухни. [Реквизиты / УНП]</div>
+    <div class="foot-bottom">© 2026 Кухни — дом кухни. [Реквизиты / УНП]</div>
   </div>
 </footer>
 
