@@ -53,7 +53,7 @@ h1,h2,h3{text-wrap:balance}
 .ph{background:var(--ph);color:var(--muted-2);display:flex;align-items:center;justify-content:center;text-align:center;font-size:15px;padding:20px}
 
 /* Шапка */
-.top{background:var(--wine);color:var(--on-dark);position:sticky;top:0;z-index:10}
+.top{background:var(--wine);color:var(--on-dark)}
 .top .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:14px}
 .logo{display:flex;align-items:center;gap:12px;color:var(--on-dark);text-decoration:none}
 .logo:hover{color:var(--on-dark)}
@@ -62,9 +62,17 @@ h1,h2,h3{text-wrap:balance}
 .nav{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:15px}
 .nav a{color:var(--on-dark);text-decoration:none}
 .nav a:hover{color:var(--rose)}
-.phone{color:var(--on-dark);text-decoration:none;font-weight:700;border:1px solid var(--rose);border-radius:999px;padding:9px 18px}
+.phone{white-space:nowrap;color:var(--on-dark);text-decoration:none;font-weight:700;border:1px solid var(--rose);border-radius:999px;padding:9px 18px}
 .phone:hover{background:var(--rose);color:var(--wine)}
-@media (max-width:860px){.nav{display:none}}
+@media (max-width:860px){
+  .nav{display:none}
+  .top .wrap{flex-wrap:nowrap;padding-block:10px;gap:10px}
+  .logo{gap:8px}
+  .logo svg{width:32px;height:32px}
+  .logo b{font-size:17px}
+  .logo small{font-size:10px}
+  .phone{white-space:nowrap;font-size:14px;padding:8px 12px}
+}
 
 /* Первый экран */
 .hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px;align-items:center;padding-block:72px 64px}
