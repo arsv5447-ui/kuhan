@@ -9,23 +9,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-/* Лендинг: графитовые полосы (шапка, расчёт, подвал) чередуются с белыми */
+/* Лендинг: полосы Taupe Brown (шапка, расчёт, подвал) чередуются со светлыми Cream Brown */
 :root{
-  --wine:#26282B;      /* графит: фон полос и основной текст */
-  --accent:#2F3236;    /* графитовый акцент: кнопки, цифры */
-  --accent-dark:#111214;
-  --rose:#D4D7DB;      /* светло-серый на тёмном */
-  --bg:#FFFFFF;        /* основной светлый фон */
-  --bg-2:#F2F3F4;      /* фон портфолио */
+  --wine:#774B32;      /* Taupe Brown: фон полос и основной текст */
+  --accent:#6A4129;    /* тёмный коричневый: кнопки, цифры */
+  --accent-dark:#4E2F1E;
+  --rose:#E3CDB6;      /* Cream Brown на тёмном */
+  --bg:#F8F1E9;        /* основной светлый фон */
+  --bg-2:#EFE3D5;      /* фон портфолио */
   --card:#FFFFFF;
-  --muted:#4A4E53;
-  --muted-2:#5F6368;
-  --line:#DCDFE2;
-  --line-2:#EDEEF0;
-  --soft:#EEF0F2;      /* выбранный вариант */
-  --on-dark:#FFFFFF;
-  --on-dark-muted:#C3C7CC;
-  --ph:#E6E8EA;        /* заглушки фото */
+  --muted:#5E4A3D;
+  --muted-2:#6E5A4C;
+  --line:#E3D3C2;
+  --line-2:#F0E6DA;
+  --soft:#F3E7DA;      /* выбранный вариант */
+  --on-dark:#FBF6F0;
+  --on-dark-muted:#EAD9C6;
+  --ph:#E3CDB6;        /* заглушки фото */
   --display:'Unbounded', 'Arial Black', sans-serif;
   --body:'Manrope', 'Segoe UI', system-ui, sans-serif;
   color-scheme:light;
@@ -97,7 +97,7 @@ h1,h2,h3{text-wrap:balance}
 .calc-intro .eyebrow{color:var(--rose)}
 .calc-intro p{margin:0;color:var(--on-dark-muted)}
 .designer{display:flex;align-items:center;gap:14px;padding-top:8px}
-.designer .ava{width:56px;height:56px;border-radius:50%;background:#3E4247;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--on-dark-muted);flex-shrink:0}
+.designer .ava{width:56px;height:56px;border-radius:50%;background:#8A5C40;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--on-dark-muted);flex-shrink:0}
 .designer small{display:block;color:var(--on-dark-muted);font-size:14px}
 .quiz{background:var(--card);color:var(--wine);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:22px;min-width:0}
 @media (max-width:480px){.quiz{padding:22px}}
@@ -108,7 +108,7 @@ h1,h2,h3{text-wrap:balance}
 .step h3{margin:0;font-size:22px}
 .step p{margin:0;color:var(--muted-2);font-size:15px}
 .opts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
-.opt{min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px 12px;border-radius:12px;border:2px solid #E3E5E8;background:var(--card);font:inherit;font-weight:700;font-size:16px;color:var(--wine);cursor:pointer}
+.opt{min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px 12px;border-radius:12px;border:2px solid #E8D9C8;background:var(--card);font:inherit;font-weight:700;font-size:16px;color:var(--wine);cursor:pointer}
 .opt:hover{border-color:var(--rose)}
 .opt[aria-pressed="true"]{border-color:var(--accent);background:var(--soft)}
 .opt svg{stroke:var(--accent)}
@@ -174,12 +174,12 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
 .foot details.addr summary{min-height:44px;padding:6px 0;font-weight:500;font-size:16px;justify-content:flex-start;gap:8px;align-items:flex-start}
 .foot details.addr summary svg{flex-shrink:0;margin-top:3px;color:var(--rose)}
 .foot details.addr summary::after{content:none}
-.foot details.addr summary span{text-decoration:underline;text-decoration-color:#5F6368;text-underline-offset:4px}
+.foot details.addr summary span{text-decoration:underline;text-decoration-color:#6E5A4C;text-underline-offset:4px}
 .foot details.addr summary:hover span{text-decoration-color:var(--rose)}
 .foot .maps{display:flex;flex-wrap:wrap;gap:8px;padding:4px 0 10px 26px;flex-direction:row}
 .foot .maps a{border:1px solid var(--rose);border-radius:999px;padding:8px 14px;font-size:14px;min-height:40px;display:inline-flex;align-items:center}
 .foot .maps a:hover{background:var(--rose);color:var(--wine)}
-.foot-bottom{border-top:1px solid #3E4247;padding-top:24px;font-size:14px;color:#A9AEB4}
+.foot-bottom{border-top:1px solid #8A5C40;padding-top:24px;font-size:14px;color:#D9C2AA}
 </style>
 </head>
 <body>
@@ -187,7 +187,7 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
 <header class="top">
   <div class="wrap">
     <a href="#top" class="logo" aria-label="Дом кухни — на главную">
-      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="1" y="1" width="38" height="38" rx="8" fill="none" stroke="#D4D7DB" stroke-width="2"/><path d="M10 12v16M10 20l9-8M10 20l9 8M24 12h7M24 20h7M24 28h7" stroke="#D4D7DB" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect x="1" y="1" width="38" height="38" rx="8" fill="none" stroke="#E3CDB6" stroke-width="2"/><path d="M10 12v16M10 20l9-8M10 20l9 8M24 12h7M24 20h7M24 28h7" stroke="#E3CDB6" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
       <span><b>ДОМ КУХНИ</b></span>
     </a>
     <nav class="nav" aria-label="Разделы">
@@ -290,7 +290,7 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
         <p class="err" id="err" hidden></p>
 
         <div class="done" id="done" hidden>
-          <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="#2F3236" stroke-width="3"/><path d="M20 33l8 8 16-17" stroke="#2F3236" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="#6A4129" stroke-width="3"/><path d="M20 33l8 8 16-17" stroke="#6A4129" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <h3>Заявка принята!</h3>
           <p>Дизайнер свяжется с вами в ближайшее время.</p>
           <button type="button" class="link-btn" id="restart">Пройти расчёт заново</button>
@@ -308,22 +308,22 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
     <div class="head"><h2 class="h2">Почему кухни заказывают у нас</h2></div>
     <div class="why">
       <div>
-        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#2F3236" stroke-width="1.8" stroke-linecap="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#6A4129" stroke-width="1.8" stroke-linecap="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
         <h3>Точно по размерам</h3>
         <p>Замер учитывает каждую трубу, розетку и выступ, поэтому гарнитур встаёт без щелей.</p>
       </div>
       <div>
-        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#2F3236" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#6A4129" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
         <h3>Проект до оплаты</h3>
         <p>Вы видите кухню в 3D, выбираете материалы и только потом подписываете договор.</p>
       </div>
       <div>
-        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#2F3236" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#6A4129" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
         <h3>Срок в договоре</h3>
         <p>Фиксируем стоимость и дату установки письменно, без сюрпризов в процессе.</p>
       </div>
       <div>
-        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#2F3236" stroke-width="1.8" stroke-linecap="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#6A4129" stroke-width="1.8" stroke-linecap="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
         <h3>Гарантия на мебель</h3>
         <p>Фурнитура с доводчиками и гарантия 5 лет на всю кухню.</p>
       </div>
