@@ -31,6 +31,7 @@
   color-scheme:light;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--bg);color:var(--wine);font-family:var(--body);font-size:17px;line-height:1.55}
@@ -115,6 +116,8 @@ h1,h2,h3{text-wrap:balance}
 .field{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700}
 .field input{height:50px;border:1.5px solid var(--line);border-radius:10px;padding:0 14px;font:inherit;font-weight:400;font-size:16px;color:var(--wine)}
 .field input:focus{border-color:var(--accent);outline:none}
+.note{margin:0;background:var(--soft);border-radius:10px;padding:12px 14px;font-size:15px;color:var(--wine)}
+.note a{font-weight:700;white-space:nowrap}
 .err{color:var(--accent);font-size:14px;font-weight:700}
 .summary{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--muted)}
 .quiz-nav{display:flex;justify-content:space-between;gap:12px}
@@ -288,13 +291,7 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
         </div>
 
         <p class="err" id="err" hidden></p>
-
-        <div class="done" id="done" hidden>
-          <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="#6A4129" stroke-width="3"/><path d="M20 33l8 8 16-17" stroke="#6A4129" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h3>Заявка принята!</h3>
-          <p>Дизайнер свяжется с вами в ближайшее время.</p>
-          <button type="button" class="link-btn" id="restart">Пройти расчёт заново</button>
-        </div>
+        <p class="note" id="note" hidden>Спасибо! Онлайн-заявки скоро заработают. Чтобы рассчитать стоимость прямо сейчас, позвоните нам: <a href="tel:+375339111152">+375 (33) 911-11-52</a></p>
 
         <div class="quiz-nav" id="quizNav">
           <button type="button" class="btn back" id="back" style="visibility:hidden">Назад</button>
@@ -408,11 +405,7 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
 
   function render() {
     steps.forEach(function (s) { s.hidden = Number(s.dataset.step) !== step; });
-    var done = step === 5;
-    $('done').hidden = !done;
-    $('progress').hidden = done;
-    $('quizNav').hidden = done;
-    if (done) return;
+    $('note').hidden = true;
     $('stepNum').textContent = step;
     $('stepName').textContent = names[step - 1];
     $('barFill').style.width = (step * 25) + '%';
@@ -432,9 +425,11 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
       var phone = $('q-phone').value.replace(/[^\d+]/g, '');
       if (!name) { showErr('Напишите, как к вам обращаться.'); return; }
       if (phone.replace(/\D/g, '').length < 9) { showErr('Проверьте номер телефона: в нём не хватает цифр.'); return; }
-      // Здесь заявка будет отправляться менеджеру (Telegram-бот, почта или CRM).
-      // Пока сайт локальный, данные просто показываются в консоли браузера.
+      // Здесь заявка будет отправляться в Telegram (подключим позже).
       console.log('Новая заявка', { name: name, phone: phone, shape: answers.shape, size: answers.size, budget: answers.budget });
+      $('err').hidden = true;
+      $('note').hidden = false;
+      return;
     }
     $('err').hidden = true;
     step++;
@@ -443,13 +438,6 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
 
   $('back').addEventListener('click', function () { $('err').hidden = true; step = Math.max(1, step - 1); render(); });
 
-  $('restart').addEventListener('click', function () {
-    answers = {};
-    document.querySelectorAll('.opt').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
-    $('quiz').reset();
-    step = 1;
-    render();
-  });
 
   $('quiz').addEventListener('submit', function (e) { e.preventDefault(); });
   render();
