@@ -100,7 +100,7 @@ h1,h2,h3{text-wrap:balance}
 .designer{display:flex;align-items:center;gap:14px;padding-top:8px}
 .designer .ava{width:56px;height:56px;border-radius:50%;background:#8A5C40;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--on-dark-muted);flex-shrink:0}
 .designer small{display:block;color:var(--on-dark-muted);font-size:14px}
-.quiz{background:var(--card);color:var(--wine);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:22px;min-width:0}
+.quiz{position:relative;background:var(--card);color:var(--wine);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:22px;min-width:0}
 @media (max-width:480px){.quiz{padding:22px}}
 .progress-top{display:flex;justify-content:space-between;font-size:14px;color:var(--muted-2)}
 .bar{height:6px;background:var(--line-2);border-radius:3px;overflow:hidden;margin-top:10px}
@@ -116,8 +116,6 @@ h1,h2,h3{text-wrap:balance}
 .field{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:700}
 .field input{height:50px;border:1.5px solid var(--line);border-radius:10px;padding:0 14px;font:inherit;font-weight:400;font-size:16px;color:var(--wine)}
 .field input:focus{border-color:var(--accent);outline:none}
-.note{margin:0;background:var(--soft);border-radius:10px;padding:12px 14px;font-size:15px;color:var(--wine)}
-.note a{font-weight:700;white-space:nowrap}
 .err{color:var(--accent);font-size:14px;font-weight:700}
 .summary{background:var(--soft);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--muted)}
 .quiz-nav{display:flex;justify-content:space-between;gap:12px}
@@ -166,6 +164,18 @@ summary::after{content:"+";font-size:24px;color:var(--accent);flex-shrink:0}
 details[open] summary::after{content:"−"}
 details p{margin:0;padding:0 22px 20px;color:var(--muted)}
 
+/* Окно «Заявка принята» */
+.modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(40,24,15,.55);animation:fadeIn .25s ease}
+.modal-card{background:var(--card);color:var(--wine);border-radius:20px;padding:36px 28px 28px;max-width:400px;width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;box-shadow:0 20px 60px rgba(40,24,15,.3);animation:popIn .35s cubic-bezier(.2,.9,.3,1.2)}
+.modal-card h3{margin:0;font-family:var(--display);font-size:24px}
+.modal-card p{margin:0;color:var(--muted)}
+.modal-card .btn{margin-top:8px;min-width:180px}
+.check-circle{stroke-dasharray:190;stroke-dashoffset:190;animation:draw .6s .15s ease-out forwards}
+.check-mark{stroke-dasharray:50;stroke-dashoffset:50;animation:draw .35s .7s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fadeIn{from{opacity:0}}
+@keyframes popIn{from{opacity:0;transform:scale(.9) translateY(10px)}}
+@media (prefers-reduced-motion: reduce){.modal,.modal-card{animation:none}.check-circle,.check-mark{animation:none;stroke-dashoffset:0}}
 .foot{background:var(--wine);color:var(--on-dark)}
 .foot .wrap{padding-block:72px 40px;display:flex;flex-direction:column;gap:48px}
 .foot-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:32px}
@@ -290,8 +300,8 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
           <div class="summary">Ваш выбор: <span id="summary"></span></div>
         </div>
 
+        <input type="text" id="q-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <p class="err" id="err" hidden></p>
-        <p class="note" id="note" hidden>Спасибо! Онлайн-заявки скоро заработают. Чтобы рассчитать стоимость прямо сейчас, позвоните нам: <a href="tel:+375339111152">+375 (33) 911-11-52</a></p>
 
         <div class="quiz-nav" id="quizNav">
           <button type="button" class="btn back" id="back" style="visibility:hidden">Назад</button>
@@ -383,8 +393,18 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
   </div>
 </footer>
 
+<div class="modal" id="okModal" role="dialog" aria-modal="true" aria-labelledby="okTitle" hidden>
+  <div class="modal-card">
+    <svg width="88" height="88" viewBox="0 0 64 64" aria-hidden="true"><circle class="check-circle" cx="32" cy="32" r="29" fill="none" stroke="var(--accent)" stroke-width="3"/><path class="check-mark" d="M20 33l8 8 16-17" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <h3 id="okTitle">Заявка принята!</h3>
+    <p>Дизайнер свяжется с вами в ближайшее время.</p>
+    <button type="button" class="btn btn-main" id="okClose">Хорошо</button>
+  </div>
+</div>
+
 <script>
 (function () {
+  var FORM_URL = 'https://script.google.com/macros/s/AKfycbzn5ckKGIMnjrGMVur2LvFimYkkRkNx6FiryK02Qj5yWA-hU_E07SwQrefAzsH-OTZbeQ/exec';
   var names = ['Планировка', 'Размер', 'Бюджет', 'Контакты'];
   var keys = ['shape', 'size', 'budget'];
   var answers = {};
@@ -405,7 +425,6 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
 
   function render() {
     steps.forEach(function (s) { s.hidden = Number(s.dataset.step) !== step; });
-    $('note').hidden = true;
     $('stepNum').textContent = step;
     $('stepName').textContent = names[step - 1];
     $('barFill').style.width = (step * 25) + '%';
@@ -425,10 +444,23 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
       var phone = $('q-phone').value.replace(/[^\d+]/g, '');
       if (!name) { showErr('Напишите, как к вам обращаться.'); return; }
       if (phone.replace(/\D/g, '').length < 9) { showErr('Проверьте номер телефона: в нём не хватает цифр.'); return; }
-      // Здесь заявка будет отправляться в Telegram (подключим позже).
-      console.log('Новая заявка', { name: name, phone: phone, shape: answers.shape, size: answers.size, budget: answers.budget });
-      $('err').hidden = true;
-      $('note').hidden = false;
+      var btn = $('next');
+      btn.disabled = true;
+      btn.textContent = 'Отправляем…';
+      fetch(FORM_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ name: name, phone: phone, shape: answers.shape, size: answers.size, budget: answers.budget, website: $('q-website').value })
+      }).then(function () {
+        btn.disabled = false;
+        resetQuiz();
+        openModal();
+      }).catch(function () {
+        btn.disabled = false;
+        btn.textContent = 'Получить расчёт';
+        showErr('Не получилось отправить заявку. Проверьте интернет или позвоните нам: +375 (33) 911-11-52.');
+      });
       return;
     }
     $('err').hidden = true;
@@ -438,6 +470,28 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
 
   $('back').addEventListener('click', function () { $('err').hidden = true; step = Math.max(1, step - 1); render(); });
 
+
+
+  function resetQuiz() {
+    answers = {};
+    document.querySelectorAll('.opt').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+    $('quiz').reset();
+    step = 1;
+    render();
+  }
+  var lastFocus = null;
+  function openModal() {
+    lastFocus = document.activeElement;
+    $('okModal').hidden = false;
+    $('okClose').focus();
+  }
+  function closeModal() {
+    $('okModal').hidden = true;
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  $('okClose').addEventListener('click', closeModal);
+  $('okModal').addEventListener('click', function (e) { if (e.target === $('okModal')) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('okModal').hidden) closeModal(); });
 
   $('quiz').addEventListener('submit', function (e) { e.preventDefault(); });
   render();
