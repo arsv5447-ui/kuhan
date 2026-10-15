@@ -65,16 +65,40 @@ h1,h2,h3{text-wrap:balance}
 .nav a:hover{color:var(--rose)}
 .phone{white-space:nowrap;color:var(--on-dark);text-decoration:none;font-weight:700;border:1px solid var(--rose);border-radius:999px;padding:9px 18px}
 .phone:hover{background:var(--rose);color:var(--wine)}
+.top{position:relative;z-index:20}
+.top-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.burger{display:none;width:42px;height:42px;flex-shrink:0;align-items:center;justify-content:center;flex-direction:column;gap:5px;background:none;border:1px solid var(--rose);border-radius:10px;cursor:pointer;padding:0}
+.burger span{display:block;width:18px;height:2px;border-radius:2px;background:var(--on-dark);transition:transform .25s,opacity .2s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mnav{position:absolute;left:0;right:0;top:100%;background:var(--wine);border-top:1px solid #8A5C40;box-shadow:0 16px 30px rgba(40,24,15,.25);padding:8px 16px 20px;display:flex;flex-direction:column}
+.mnav a{color:var(--on-dark);text-decoration:none;font-size:18px;font-weight:500;padding:14px 4px;border-bottom:1px solid #8A5C40}
+.mnav a:last-child{border-bottom:none}
+.mnav a:hover{color:var(--rose)}
+.mnav .mnav-phone{margin-top:12px;align-self:flex-start;border:1px solid var(--rose);border-radius:999px;padding:10px 18px;font-weight:700;font-size:16px}
+@media (prefers-reduced-motion: reduce){.burger span{transition:none}}
 @media (max-width:860px){
   .nav{display:none}
+  .burger{display:inline-flex}
   .top .wrap{flex-wrap:nowrap;padding-block:10px;gap:10px}
-  .logo{gap:8px}
+  .logo{gap:8px;min-width:0}
   .logo svg{width:32px;height:32px}
-  .logo b{font-size:15px}
+  .logo b{font-size:15px;white-space:nowrap}
   .phone{white-space:nowrap;font-size:13px;padding:8px 10px}
 }
-@media (max-width:370px){
+@media (min-width:861px){.mnav{display:none!important}}
+@media (max-width:480px){
+  .top .wrap{gap:8px}
+  .top-right{gap:8px}
   .logo svg{display:none}
+  .logo b{font-size:14px}
+  .phone{font-size:12.5px;padding:7px 9px}
+}
+@media (max-width:350px){
+  .logo b{font-size:13px}
+  .phone{font-size:11.5px;padding:6px 8px}
+  .burger{width:38px;height:38px}
 }
 
 /* Первый экран */
@@ -87,7 +111,7 @@ h1,h2,h3{text-wrap:balance}
 .facts b{font-family:var(--display);font-size:clamp(18px,5vw,22px);display:block;white-space:nowrap}
 .facts span{font-size:14px;color:var(--muted-2)}
 .hero-photo{position:relative;min-height:460px;border-radius:20px;overflow:hidden}
-.hero-badge{position:absolute;left:20px;bottom:20px;background:var(--card);border-radius:12px;padding:14px 18px;text-align:left}
+.hero-badge{z-index:1;position:absolute;left:20px;bottom:20px;background:var(--card);border-radius:12px;padding:14px 18px;text-align:left}
 .hero-badge span{display:block;font-size:13px;color:var(--muted-2)}
 .hero-badge b{color:var(--wine)}
 
@@ -143,7 +167,30 @@ h1,h2,h3{text-wrap:balance}
 .projects .head p{margin:0;color:var(--muted);max-width:420px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:24px}
 .card{background:var(--card);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-.card .ph{height:240px}
+/* Портфолио */
+.card-photo{position:relative;display:block;width:100%;aspect-ratio:4/3;max-width:100%;padding:0;border:0;background:var(--ph);cursor:zoom-in;overflow:hidden}
+.card-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.card-photo:hover img{transform:scale(1.04)}
+.photo-count{position:absolute;right:12px;bottom:12px;display:inline-flex;align-items:center;gap:6px;background:rgba(30,18,10,.72);color:#fff;font-size:13px;font-weight:700;padding:6px 10px;border-radius:999px}
+.link-more{background:none;border:0;padding:8px 0;font:inherit;font-weight:700;color:var(--accent);cursor:pointer;min-height:44px}
+.link-more:hover{color:var(--accent-dark)}
+.gal{position:fixed;inset:0;z-index:60;background:rgba(20,12,7,.92);display:flex;flex-direction:column;color:#fff;animation:fadeIn .2s ease}
+.gal-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px}
+.gal-count{font-size:14px;color:#E3CDB6}
+.gal-btn{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.gal-btn:hover{background:rgba(255,255,255,.2)}
+.gal-main{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;gap:12px;padding:0 12px}
+.gal-main img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;user-select:none}
+.gal-stage{flex:1;min-width:0;height:100%;display:flex;align-items:center;justify-content:center}
+.gal-info{background:var(--card);color:var(--wine);border-radius:18px 18px 0 0;padding:18px 20px 22px;display:flex;flex-wrap:wrap;gap:12px 32px;align-items:flex-start;justify-content:space-between;max-height:42vh;overflow:auto}
+.gal-info h3{margin:0 0 4px;font-family:var(--display);font-size:20px}
+.gal-info .tag{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.gal-specs{margin:8px 0 0;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px}
+.gal-specs dt{color:var(--muted-2)}
+.gal-specs dd{margin:0}
+.gal-cta{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.gal-cta b{font-family:var(--display);font-size:20px}
+@media (max-width:640px){.gal-main .gal-btn{display:none}.gal-info{padding:16px}}
 .card-body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex-grow:1}
 .card .tag{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:.06em}
 .card h3{margin:0;font-size:20px}
@@ -210,9 +257,36 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
       <a href="#faq">Вопросы</a>
       <a href="#contacts">Контакты</a>
     </nav>
-    <a href="tel:+375339111152" class="phone">+375 (33) 911-11-52</a>
+    <div class="top-right">
+      <a href="tel:+375339111152" class="phone">+375 (33) 911-11-52</a>
+      <button type="button" class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
+    </div>
   </div>
+  <nav class="mnav" id="mnav" aria-label="Меню" hidden>
+    <a href="#calc">Расчёт стоимости</a>
+    <a href="#work">Как работаем</a>
+    <a href="#projects">Наши кухни</a>
+    <a href="#faq">Вопросы</a>
+    <a href="#contacts">Контакты</a>
+    <a href="tel:+375339111152" class="mnav-phone">Позвонить: +375 (33) 911-11-52</a>
+  </nav>
 </header>
+<script>
+(function () {
+  var btn = document.getElementById('burger');
+  var menu = document.getElementById('mnav');
+  function setOpen(open) {
+    menu.hidden = !open;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+  }
+  btn.addEventListener('click', function () { setOpen(menu.hidden); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !menu.hidden) { setOpen(false); btn.focus(); } });
+  document.addEventListener('click', function (e) { if (!menu.hidden && !e.target.closest('.top')) setOpen(false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 860 && !menu.hidden) setOpen(false); });
+})();
+</script>
 
 <main id="top">
   <section class="wrap hero">
@@ -231,8 +305,7 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
       </div>
     </div>
     <div class="hero-photo ph">
-      <!-- Замените на: <img src="images/hero.jpg" alt="Кухня в интерьере" style="width:100%;height:100%;object-fit:cover"> -->
-      Главное фото кухни<br>(положите файл в папку images)
+      <img src="images/k1/1.jpg" alt="Кухня с верхними шкафами в орехе и столешницей под оникс" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
       <div class="hero-badge"><span>Дизайн-проект</span><b>бесплатно при заказе</b></div>
     </div>
   </section>
@@ -243,7 +316,7 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
         <span class="eyebrow">Расчёт за 1 минуту</span>
         <h2 class="h2">Узнайте примерную стоимость вашей кухни</h2>
         <p>Ответьте на три вопроса. Дизайнер перезвонит, уточнит детали и пригласит в салон посмотреть образцы материалов.</p>
-        <div class="designer">
+        <div class="designer" hidden>
           <div class="ava">фото</div>
           <div><b>[Имя дизайнера]</b><small>дизайнер-консультант</small></div>
         </div>
@@ -266,14 +339,13 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
         </div>
 
         <div class="step" data-step="2" hidden>
-          <h3>Какая примерная длина гарнитура?</h3>
+          <h3>Какая площадь кухни?</h3>
           <p>Если точно не знаете, выберите ближайший вариант. Уточним на замере.</p>
           <div class="opts" data-key="size">
-            <button type="button" class="opt" aria-pressed="false" data-val="до 2 м">до 2 м</button>
-            <button type="button" class="opt" aria-pressed="false" data-val="2–3 м">2–3 м</button>
-            <button type="button" class="opt" aria-pressed="false" data-val="3–4 м">3–4 м</button>
-            <button type="button" class="opt" aria-pressed="false" data-val="4–5 м">4–5 м</button>
-            <button type="button" class="opt" aria-pressed="false" data-val="больше 5 м">больше 5 м</button>
+            <button type="button" class="opt" aria-pressed="false" data-val="4–6 м²">4–6 м²</button>
+            <button type="button" class="opt" aria-pressed="false" data-val="7–9 м²">7–9 м²</button>
+            <button type="button" class="opt" aria-pressed="false" data-val="10–15 м²">10–15 м²</button>
+            <button type="button" class="opt" aria-pressed="false" data-val="более 15 м²">более 15 м²</button>
           </div>
         </div>
 
@@ -352,15 +424,81 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
     <div class="wrap">
       <div class="head">
         <div style="display:flex;flex-direction:column;gap:10px"><span class="eyebrow">Портфолио</span><h2 class="h2">Кухни, которые мы сделали</h2></div>
-        <p>Цены указаны без техники и зависят от размеров, материалов и наполнения.</p>
+        <p>Нажмите на фото, чтобы посмотреть все снимки и материалы. Цены указаны без техники и зависят от размеров и наполнения.</p>
       </div>
       <div class="grid">
-        <article class="card"><div class="ph">Фото проекта</div><div class="card-body"><span class="tag">УГЛОВАЯ · [РАЗМЕР]</span><h3>Графит и дуб</h3><p>[Описание: фасады, столешница, фурнитура]</p><div class="card-foot"><b>от [ЦЕНА] BYN</b><a href="#calc">Хочу похожую →</a></div></div></article>
-        <article class="card"><div class="ph">Фото проекта</div><div class="card-body"><span class="tag">С ОСТРОВОМ · [РАЗМЕР]</span><h3>Кухня-гостиная</h3><p>[Описание: фасады, столешница, фурнитура]</p><div class="card-foot"><b>от [ЦЕНА] BYN</b><a href="#calc">Хочу похожую →</a></div></div></article>
-        <article class="card"><div class="ph">Фото проекта</div><div class="card-body"><span class="tag">ПРЯМАЯ · [РАЗМЕР]</span><h3>Светлая классика</h3><p>[Описание: фасады, столешница, фурнитура]</p><div class="card-foot"><b>от [ЦЕНА] BYN</b><a href="#calc">Хочу похожую →</a></div></div></article>
-        <article class="card"><div class="ph">Фото проекта</div><div class="card-body"><span class="tag">П-ОБРАЗНАЯ · [РАЗМЕР]</span><h3>Оливковый матовый</h3><p>[Описание: фасады, столешница, фурнитура]</p><div class="card-foot"><b>от [ЦЕНА] BYN</b><a href="#calc">Хочу похожую →</a></div></div></article>
-        <article class="card"><div class="ph">Фото проекта</div><div class="card-body"><span class="tag">УГЛОВАЯ · [РАЗМЕР]</span><h3>Белая минималистичная</h3><p>[Описание: фасады, столешница, фурнитура]</p><div class="card-foot"><b>от [ЦЕНА] BYN</b><a href="#calc">Хочу похожую →</a></div></div></article>
-        <article class="card"><div class="ph">Фото проекта</div><div class="card-body"><span class="tag">ПРЯМАЯ · [РАЗМЕР]</span><h3>Для загородного дома</h3><p>[Описание: фасады, столешница, фурнитура]</p><div class="card-foot"><b>от [ЦЕНА] BYN</b><a href="#calc">Хочу похожую →</a></div></div></article>
+        <article class="card">
+          <button type="button" class="card-photo" data-k="0" aria-label="Смотреть все фото: Орех и оникс">
+            <img src="images/k1/1.jpg" alt="Кухня «Орех и оникс»" loading="lazy" width="1280" height="960">
+            <span class="photo-count"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-5-8 8"/></svg>7 фото</span>
+          </button>
+          <div class="card-body">
+            <span class="tag">Угловая · с барной стойкой</span>
+            <h3>Орех и оникс</h3>
+            <p>Верхние шкафы до потолка в орехе, светлый фрезерованный низ и столешница под оникс. Витрина с подсветкой и барная стойка у окна.</p>
+            <div class="card-foot"><b>от 8 490 BYN</b><button type="button" class="link-more" data-k="0">Подробнее →</button></div>
+          </div>
+        </article>
+        <article class="card">
+          <button type="button" class="card-photo" data-k="1" aria-label="Смотреть все фото: Белая до потолка">
+            <img src="images/k2/1.jpg" alt="Кухня «Белая до потолка»" loading="lazy" width="1280" height="960">
+            <span class="photo-count"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-5-8 8"/></svg>4 фото</span>
+          </button>
+          <div class="card-body">
+            <span class="tag">Угловая · в два яруса</span>
+            <h3>Белая до потолка</h3>
+            <p>Белые фасады в два яруса до самого потолка, колонна под встроенную технику, сушка и подъёмные механизмы в верхних шкафах.</p>
+            <div class="card-foot"><b>от 10 320 BYN</b><button type="button" class="link-more" data-k="1">Подробнее →</button></div>
+          </div>
+        </article>
+        <article class="card">
+          <button type="button" class="card-photo" data-k="2" aria-label="Смотреть все фото: Графит и орех">
+            <img src="images/k3/1.jpg" alt="Кухня «Графит и орех»" loading="lazy" width="1280" height="960">
+            <span class="photo-count"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-5-8 8"/></svg>8 фото</span>
+          </button>
+          <div class="card-body">
+            <span class="tag">П-образная · серия «Оптима»</span>
+            <h3>Графит и орех</h3>
+            <p>Матовые серые фасады без ручек со вставкой из ореха, столешница под дерево и подсветка цоколя. Много выдвижных ящиков и встроенная техника.</p>
+            <div class="card-foot"><b>от 10 540 BYN</b><button type="button" class="link-more" data-k="2">Подробнее →</button></div>
+          </div>
+        </article>
+        <article class="card">
+          <button type="button" class="card-photo" data-k="3" aria-label="Смотреть все фото: Тёплый дуб">
+            <img src="images/k4/1.jpg" alt="Кухня «Тёплый дуб»" loading="lazy" width="1280" height="960">
+            <span class="photo-count"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-5-8 8"/></svg>6 фото</span>
+          </button>
+          <div class="card-body">
+            <span class="tag">Угловая · с колонной</span>
+            <h3>Тёплый дуб</h3>
+            <p>Фасады под натуральное дерево и белые верхние шкафы. Встроенные холодильник и посудомойка, колонна-перегородка с открытыми нишами со стороны комнаты.</p>
+            <div class="card-foot"><b>от 13 260 BYN</b><button type="button" class="link-more" data-k="3">Подробнее →</button></div>
+          </div>
+        </article>
+        <article class="card">
+          <button type="button" class="card-photo" data-k="4" aria-label="Смотреть все фото: Орех и рифлёный шоколад">
+            <img src="images/k5/1.jpg" alt="Кухня «Орех и рифлёный шоколад»" loading="lazy" width="1280" height="960">
+            <span class="photo-count"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-5-8 8"/></svg>4 фото</span>
+          </button>
+          <div class="card-body">
+            <span class="tag">Угловая · компактная</span>
+            <h3>Орех и рифлёный шоколад</h3>
+            <p>Тёмные рифлёные фасады в паре с орехом, ниша под холодильник до потолка и тумба в том же стиле.</p>
+            <div class="card-foot"><b>от 7 430 BYN</b><button type="button" class="link-more" data-k="4">Подробнее →</button></div>
+          </div>
+        </article>
+        <article class="card">
+          <button type="button" class="card-photo" data-k="5" aria-label="Смотреть все фото: Шёлк и мрамор">
+            <img src="images/k6/1.jpg" alt="Кухня «Шёлк и мрамор»" loading="lazy" width="1280" height="960">
+            <span class="photo-count"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-5-8 8"/></svg>6 фото</span>
+          </button>
+          <div class="card-body">
+            <span class="tag">Прямая · «Оптима» + индивидуальные элементы</span>
+            <h3>Шёлк и мрамор</h3>
+            <p>Бежевые шёлковые фасады без ручек и столешница под мрамор. Отдельная тумба с мойкой и шкаф-пенал в том же цвете.</p>
+            <div class="card-foot"><b>от 8 670 BYN</b><button type="button" class="link-more" data-k="5">Подробнее →</button></div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -393,6 +531,87 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
   </div>
 </footer>
 
+<div class="gal" id="gal" role="dialog" aria-modal="true" aria-labelledby="galTitle" hidden>
+  <div class="gal-top">
+    <span class="gal-count" id="galCount"></span>
+    <button type="button" class="gal-btn" id="galClose" aria-label="Закрыть"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="gal-main">
+    <button type="button" class="gal-btn" id="galPrev" aria-label="Предыдущее фото"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="gal-stage" id="galStage"><img id="galImg" src="" alt=""></div>
+    <button type="button" class="gal-btn" id="galNext" aria-label="Следующее фото"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <div class="gal-info">
+    <div>
+      <span class="tag" id="galTag"></span>
+      <h3 id="galTitle"></h3>
+      <dl class="gal-specs" id="galSpecs"></dl>
+    </div>
+    <div class="gal-cta">
+      <b id="galPrice"></b>
+      <a href="#calc" class="btn btn-main" id="galCalc">Хочу похожую</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var KITCHENS = [{"title": "Орех и оникс", "tag": "Угловая · с барной стойкой", "price": "от 8 490 BYN", "specs": [["Фасады низ", "МДФ «Хаген», цвет RET Ангора"], ["Фасады верх", "ЛДСП «Орех Карини натуральный»"], ["Корпус", "премиум"], ["Столешница", "«Мультан»"], ["Ручки", "UZST-20M, 160 мм"]], "photos": ["images/k1/1.jpg", "images/k1/2.jpg", "images/k1/3.jpg", "images/k1/4.jpg", "images/k1/5.jpg", "images/k1/6.jpg", "images/k1/7.jpg"]}, {"title": "Белая до потолка", "tag": "Угловая · в два яруса", "price": "от 10 320 BYN", "specs": [["Фасады", "ПВХ «Белое дерево»"], ["Корпус", "премиум"], ["Столешница", "«Зевс»"], ["Ручки", "UZST-20M, 160 мм"]], "photos": ["images/k2/1.jpg", "images/k2/2.jpg", "images/k2/3.jpg", "images/k2/4.jpg"]}, {"title": "Графит и орех", "tag": "П-образная · серия «Оптима»", "price": "от 10 540 BYN", "specs": [["Фасады", "МДФ ПВХ «Терра», ЛДСП «Орех Карини натуральный»"], ["Каркас", "«Диамант серый»"], ["Столешница", "«Онтарио»"], ["Ручки", "профиль C1 и C2, чёрные"]], "photos": ["images/k3/1.jpg", "images/k3/2.jpg", "images/k3/3.jpg", "images/k3/4.jpg", "images/k3/5.jpg", "images/k3/6.jpg", "images/k3/7.jpg", "images/k3/8.jpg"]}, {"title": "Тёплый дуб", "tag": "Угловая · с колонной", "price": "от 13 260 BYN", "specs": [["Фасады", "МДФ Тимбер «Каселла натуральный»"], ["Корпус", "«Дуб медовый»"], ["Ручки", "профиль C1 и C2, чёрные"]], "photos": ["images/k4/1.jpg", "images/k4/2.jpg", "images/k4/3.jpg", "images/k4/4.jpg", "images/k4/5.jpg", "images/k4/6.jpg"]}, {"title": "Орех и рифлёный шоколад", "tag": "Угловая · компактная", "price": "от 7 430 BYN", "specs": [["Фасады", "МДФ эмаль 645П RAL 8019, ЛДСП «Орех Карини натуральный»"], ["Каркас", "графит"], ["Столешница", "«Каньон»"], ["Ручки", "UZNOR-20M, 19-L36, чёрные"]], "photos": ["images/k5/1.jpg", "images/k5/2.jpg", "images/k5/3.jpg", "images/k5/4.jpg"]}, {"title": "Шёлк и мрамор", "tag": "Прямая · «Оптима» + индивидуальные элементы", "price": "от 8 670 BYN", "specs": [["Фасады", "МДФ «Прайм шёлковый»"], ["Каркас", "премиум"], ["Столешница", "«Мрамор Бернини»"], ["Ручки", "профиль C1 и C2, чёрные"]], "photos": ["images/k6/1.jpg", "images/k6/2.jpg", "images/k6/3.jpg", "images/k6/4.jpg", "images/k6/5.jpg", "images/k6/6.jpg"]}];
+  var gal = document.getElementById('gal'), img = document.getElementById('galImg');
+  var cur = 0, idx = 0, lastFocus = null;
+  function show() {
+    var k = KITCHENS[cur];
+    img.src = k.photos[idx];
+    img.alt = 'Кухня «' + k.title + '», фото ' + (idx + 1);
+    document.getElementById('galCount').textContent = (idx + 1) + ' / ' + k.photos.length;
+    var n = k.photos[(idx + 1) % k.photos.length]; new Image().src = n;
+  }
+  function open(k) {
+    cur = k; idx = 0; lastFocus = document.activeElement;
+    var d = KITCHENS[k];
+    document.getElementById('galTag').textContent = d.tag;
+    document.getElementById('galTitle').textContent = d.title;
+    document.getElementById('galPrice').textContent = d.price;
+    var dl = document.getElementById('galSpecs'); dl.textContent = '';
+    d.specs.forEach(function (s) {
+      var dt = document.createElement('dt'); dt.textContent = s[0];
+      var dd = document.createElement('dd'); dd.textContent = s[1];
+      dl.appendChild(dt); dl.appendChild(dd);
+    });
+    show(); gal.hidden = false; document.body.style.overflow = 'hidden';
+    document.getElementById('galClose').focus();
+  }
+  function close() {
+    gal.hidden = true; document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function step(d) { var L = KITCHENS[cur].photos.length; idx = (idx + d + L) % L; show(); }
+  document.querySelectorAll('[data-k]').forEach(function (b) {
+    b.addEventListener('click', function () { open(+b.getAttribute('data-k')); });
+  });
+  document.getElementById('galClose').addEventListener('click', close);
+  document.getElementById('galPrev').addEventListener('click', function () { step(-1); });
+  document.getElementById('galNext').addEventListener('click', function () { step(1); });
+  document.getElementById('galCalc').addEventListener('click', close);
+  document.getElementById('galStage').addEventListener('click', function (e) {
+    if (e.target === img) { var r = img.getBoundingClientRect(); step(e.clientX < r.left + r.width / 2 ? -1 : 1); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (gal.hidden) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+  });
+  var sx = null;
+  gal.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+  gal.addEventListener('touchend', function (e) {
+    if (sx === null) return;
+    var dx = e.changedTouches[0].clientX - sx; sx = null;
+    if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
+  });
+})();
+</script>
+
 <div class="modal" id="okModal" role="dialog" aria-modal="true" aria-labelledby="okTitle" hidden>
   <div class="modal-card">
     <svg width="88" height="88" viewBox="0 0 64 64" aria-hidden="true"><circle class="check-circle" cx="32" cy="32" r="29" fill="none" stroke="var(--accent)" stroke-width="3"/><path class="check-mark" d="M20 33l8 8 16-17" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -405,7 +624,7 @@ details p{margin:0;padding:0 22px 20px;color:var(--muted)}
 <script>
 (function () {
   var FORM_URL = 'https://script.google.com/macros/s/AKfycbzn5ckKGIMnjrGMVur2LvFimYkkRkNx6FiryK02Qj5yWA-hU_E07SwQrefAzsH-OTZbeQ/exec';
-  var names = ['Планировка', 'Размер', 'Бюджет', 'Контакты'];
+  var names = ['Планировка', 'Площадь', 'Бюджет', 'Контакты'];
   var keys = ['shape', 'size', 'budget'];
   var answers = {};
   var step = 1;
